@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/73a3b993a7.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
     <title>URL shrinker</title>
 </head>
 <body>
@@ -27,14 +29,31 @@
                 <% shortUrls.forEach(shorten => {%>
 
                 <tr>
-                    <td><a href="<%= shorten.full %>"><%= shorten.full %> </a></td>
-                    <td><a href="<%= shorten.short %>"><%= shorten.short %> </a></td>
-                    <td><%= shorten.clicks %></td>
+                    <td>
+                        <a href="<%= shorten.full %>">
+                            <%= shorten.full %>
+                        </a>
+                    </td>
+
+                    <td>
+                        <div class="shortUrl"> <a href="<%= shorten.short %>"> </div>
+                            <%= shorten.short %>
+                        </a>
+
+                        <button type="button" class="btn btn-outline-secondary btnCopy" data-clipboard-target=".shortUrl">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </td>
+
+                    <td>
+                        <%= shorten.clicks %>
+                    </td>
                 </tr>
-                <%})%>
+                <% }) %>
             </tbody>
         </table>
     </div>
 
+    <script src="js/index.js"></script>
 </body>
 </html>
